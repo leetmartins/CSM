@@ -1,0 +1,91 @@
+body{
+	text-align: center;
+	background:	#fffb00;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+@keyframes cores{
+	0%{background: #378452;}	
+	25%{background: #000000;}
+	50%{background:	#fffb00;}
+	75%{background:#fe0101;}
+	100%{background:#0e15dd;}
+}
+
+#game{
+	position: relative;
+	width: 1020px;
+	height: 495px;
+	border-radius: 10px;
+	margin: 5%;
+	background-color: #2d7233;
+}
+
+.card{
+	width: 140px;
+	height: 240px;
+	perspective: 90;
+	position: absolute;
+	border-radius: 10px;
+}
+
+.face{
+	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition: all 3s;
+	backface-visibility: hidden;
+}
+.bottom{
+	
+	backface-visibility: hidden;
+}
+
+.front{
+	transform: rotateY(-180deg);
+}
+
+.flipped.front{
+	transform: rotateY(0deg);
+}
+
+.back{
+	background:center/35% url(../imgs/ufabc.jpg);
+}
+
+.flipped.back{
+	transform: rotateY(180deg);
+}
+
+.card:hover, .face.flipped{
+	box-shadow: 0 0 15px #f31515;
+}
+
+.face.flipped.match{
+	box-shadow: 0 0 10px #0f0;
+}
+
+#match{
+	position: relative;
+	margin: 0 auto;
+	top: 250px;
+	z-index: -1;
+	opacity: 1;
+	transition-property: top, opacity;
+	transition-duration: 1.5s;
+}
+
+#gameOver{
+	position: absolute;
+	top: 0;
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	z-index: -2;
+}
+
+#imgGameOver{
+	margin-top: 100px;
+}
