@@ -34,12 +34,12 @@ body{
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	transition: all 3s;
+	transition: all 5s;
 	backface-visibility: hidden;
 }
 .bottom{
 	
-	backface-visibility: hidden;
+	visibility: hidden;
 }
 
 .front{

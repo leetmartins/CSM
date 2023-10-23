@@ -1,8 +1,8 @@
 (function(){
     var animals = [];
     var musics = [];
-    var flipcards = [];
-
+     
+    var pontos = 0;
     for(var i = 0; i < 14; i++){
 		//cria um objeto animal e um objeto music com um src e um id
 		var animal = {
@@ -31,9 +31,8 @@
     //embaralha a lista de animais e sons
     animals = random(animals);
     musics = random(musics);
-    let test = document.querySelector("card");
     var frontFaces = document.getElementsByClassName("front");
-    let gameOver = false;
+    
     //arruma as cartas no tabuleiro
     for(var i = 0; i < 14; i++){
     
@@ -42,7 +41,7 @@
     var card = document.querySelector("#card" + i);
     card.style.left = (i % 7) === 0 ? 5 + "px" : 5 + ((i % 7) * 145) + "px";
     card.style.top = i/7 >= 1 ? 250 + "px" : 5 + "px"; 
-    card.addEventListener("click",game,false);
+   
     
     //adiciona as imagens às cartas
     frontFaces[i].style.background = "no-repeat center/130% url('" + animals[i].src + "')";
@@ -55,27 +54,40 @@
     function desvirarCarta(index) {
         frontFaces[index].style.transform = "rotateY(180deg)";
     }
-    function game(){
-        var i = 2;
+    function game(cardID,i){
+        let numero = cardID.replace(/\D/g, '');
+        
+        console.log(i);
+        console.log(numero);
         virarCarta(i);
-        desvirarCarta(i);
-
-        flipcards.push(card.id);
+        desvirarCarta(i);       
        
-
-        if(this.id == i){
-            game();
+        if(i == numero){            
+            pontos++;            
         }
         else{
-            console.log("Fim");
+            if(cardID !="start"){
+                console.log("Fim");
+                alert("Voce fez " + pontos + " pontos.");
+                pontos = 0;
+            }
+            
+
         }
        
         
     }
+    
 document.getElementById("start").addEventListener("click", function() {
-    game();
-    this.classList.add("bottom");
+    this.classList.add('bottom');
+    let i = Math.floor(Math.random() * 14);
+    document.addEventListener("click", function(event) {
+        
+        game(event.target.id,i);
+    });
 });
+
+
     
 }());
 
