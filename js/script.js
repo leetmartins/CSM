@@ -1,7 +1,9 @@
 (function(){
     var animals = [];
     var musics = [];
-     
+    var qtdJogadores;
+	var jogadores = [];
+	var pontoJogador = []; 
     var pontos = 0;
     for(var i = 0; i < 14; i++){
 		//cria um objeto animal e um objeto music com um src e um id
@@ -59,8 +61,8 @@
         
         console.log(i);
         console.log(numero);
-        virarCarta(i);
-        desvirarCarta(i);       
+        //virarCarta(i);
+      //  desvirarCarta(i);       
        
         if(i == numero){            
             pontos++;            
@@ -77,15 +79,28 @@
        
         
     }
-    
+let ie = Math.floor(Math.random() * 14);    
 document.getElementById("start").addEventListener("click", function() {
     this.classList.add('bottom');
-    let i = Math.floor(Math.random() * 14);
-    document.addEventListener("click", function(event) {
-        
-        game(event.target.id,i);
-    });
+    qtdJogadores = parseInt(prompt("Digite a quantidade de jogadores:"));
+		for(var k = 1; k<= qtdJogadores; k++){
+			jogadores [k] = String(prompt("Digite o nome" + k));
+			pontoJogador [k] = 0;		
+		console.log(pontoJogador[k]);
+        }
+    virarCarta(ie);
+    desvirarCarta(ie);
+    
+    
 });
+
+    document.addEventListener("click", function(event) {
+        if(event.target.id!="start"){
+        game(event.target.id,iae);
+        iae = Math.floor(Math.random() * 14);
+        virarCarta(ie);
+        desvirarCarta(ie);}
+    });
 
 
     
